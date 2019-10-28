@@ -1,0 +1,2 @@
+var pairListIndexes = {};
+var pairListObjects = {};
