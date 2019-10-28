@@ -24,7 +24,9 @@ function saveMod() {
       type: "blob"
     })
     .then(function(content) {
-      saveAs(content, "example.zip");
+      modMeta = gatherModMeta();
+      var modFileName = modMeta.name + '-v' + modMeta.version + '.zip'
+      saveAs(content, modFileName.replace(/ /g, '_'  ));
     });
 }
 
