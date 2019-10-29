@@ -82,11 +82,11 @@ Draw.addablePairList = function(id, buttonName, objects, location) {
   return Draw.element(result, location);
 }
 
-// TODO register
 Draw.pairInList = function(location) {
   if (pairListIndexes[location] == null) pairListIndexes[location] = 0;
   var index = pairListIndexes[location]++;
-  return Draw.pair(location + '-' + index, pairListObjects[location], location);
+  Draw.pair(location + '-' + index, pairListObjects[location], location);
+  return index;
 }
 
 Draw.selectImage = function(id, name, location) {
