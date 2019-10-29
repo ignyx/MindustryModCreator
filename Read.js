@@ -6,7 +6,7 @@ Read.keyValue = function(id) {
 }
 
 Read.null = function(string) {
-  if (string == "") return null;
+  if (string == "") return undefined;
   return string;
 }
 
