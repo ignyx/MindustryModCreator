@@ -12,12 +12,18 @@ Read.null = function(string) {
 
 Read.string = Read.keyValue;
 
-Read.number = Read.keyValue;
+Read.number = function(id) {
+  let result = parseFloat(Read.keyValue(id));
+  if (isNaN(result)) return undefined;
+  return result;
+}
+
+Read.select = Read.keyValue;
 
 Read.pair = function(id, values) { // values : [value1, value2]
   var result = {}
-  result[values[0]] = Read.null(document.getElementById(`${id}-${values[0]}`).value);
-  result[values[1]] = Read.null(document.getElementById(`${id}-${values[1]}`).value);
+  result[values[0]] = Read[values[0].type](`${id}-${values[0]}`, values[0].special);
+  result[values[1]] = Read[values[1].type](`${id}-${values[1]}`, values[1].special);
   return result;
 }
 

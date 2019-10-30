@@ -4,14 +4,28 @@ const modMetaAttributes = [
   ['description', 'Description', 'string', 'Provides new fun.'],
   ['version', 'Version', 'string', '1.0']
 ];
-const blockCategories = [
-  ['units', 'Units'] // indentifier, English name
+const blockCategories = [{
+    value: 'units',
+    name: 'Units'
+  } // indentifier, English name
 ]
 const basicBlockAttributes = [
   ['id', 'id', 'string', 'my-special-building'],
   ['name', 'Name', 'string', 'My special building'], // identifier, English name, input type, palceholder, nullable (default: false)
   ['description', 'Description', 'string', 'Provides something special'],
   ['size', 'Size', 'number', 2],
+  ['category', 'Category', 'select', blockCategories],
+  ['requirements', 'Items used on build', 'addablePairList', [{
+    name: 'Item',
+    value: 'item',
+    type: 'string',
+    placeholder: 'silicon'
+  }, {
+    name: 'Amount',
+    value: 'amount',
+    type: 'number',
+    placeholder: '10'
+  }]]
 ];
 
 const consumeBlockAttributes = [

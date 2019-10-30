@@ -5,20 +5,25 @@ function gatherModMeta() {
 function gatherBlocks() {
   var result = []
   blocks.forEach((index) => {
+    let block = {}
     var type = document.getElementById('block-' + index + '-type').innerHTML;
-    var block = Read.attributeSet('block-' + index, blockAttributes[type]);
-    block.type = type;
+    block.properties = Read.attributeSet('block-' + index, blockAttributes[type]);
+    block.properties.type = type;
+    block.id = block.properties.id;
+    block.properties.id = undefined;
     result.push(block);
-  })
+  });
 
   return result;
 }
 
 function saveMod() {
   var zip = new JSZip();
+  // Save mod Metadata
   zip.file("mod.json", JSON.stringify(gatherModMeta()));
+  // Save blocks
   gatherBlocks().forEach((block) => {
-    zip.file("content/blocks/" + block.id + ".json", JSON.stringify(block));
+    zip.file("content/blocks/" + block.id + ".json", JSON.stringify(block.properties));
   });
   zip.generateAsync({
       type: "blob"
@@ -61,7 +66,7 @@ function importMod(zip) {
 
 
 function importBlock(id, block) {
-  console.log(block)
+  block.id = id;
   index = addBlock(block.type);
   Write.attributeSet('block-' + index, block, blockAttributes[block.type]);
 }

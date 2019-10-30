@@ -8,6 +8,8 @@ Write.string = Write.keyValue;
 
 Write.number = Write.keyValue;
 
+Write.select = Write.keyValue;
+
 Write.pair = function(id, objects) { // objects : [{name, value}]
   objects.forEach((object) => {
     Write.keyValue(id + '-' + object.name, object.value);
