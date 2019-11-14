@@ -48,19 +48,32 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
   document.getElementById('files').hidden = true;
 }
 
-var myzip; // TODO
+var myzip; // TODO remove
+var rootFolder;
+
 function importMod(zip) {
   myzip = zip;
+  rootFolder = zip;
+
+  metaFile = zip.file("mod.json");
+  if (metaFile == null) {
+    rootFolder = zip.folder(Object.keys(zip.files)[0]);
+    metaFile = rootFolder.file('mod.json');
+  }
+
   // Import mod metadata
-  zip.file("mod.json").async("string").then(function(data) {
+  metaFile.async("string").then(function(data) {
     var modMeta = JSON.parse(data);
     modMetaAttributes.forEach((attribute) => {
       Write.keyValue('modMeta-' + attribute[0], modMeta[attribute[0]])
     });
   });
   // Import Blocks
-  zip.folder('content/blocks/').forEach((path, file) => {
-    file.async('string').then(text => importBlock(path.slice(0, -5), JSON.parse(text)))
+  rootFolder.folder('content/blocks/').forEach((path, file) => {
+    if (file.name.match(/.json/))
+      file.async('string').then(text => importBlock(path.slice(0, -5), JSON.parse(text))).catch((err) => {
+        console.log(err), console.log(file.name)
+      });
   });
 }
 
