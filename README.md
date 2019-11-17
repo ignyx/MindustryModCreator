@@ -13,7 +13,7 @@ You can now find and open the `main.html` file.
 ## Usage
 Requires a relatively modern browser to operate. You should enable javascript.
 
-Usage at this time should be considerably easy.
+Usage at this time should be considerably intuitive.
 
 ## Roadmap
 Importing and exporting should always be functional before added.
