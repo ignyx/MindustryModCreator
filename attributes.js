@@ -52,9 +52,16 @@ const blockAttributes = {
   'UnitFactory': basicBlockAttributes.concat([ // Building type
     ['unitType', 'Unit type', 'string', 'chrome-wraith'],
     ['produceTime', 'Production time', 'number', '350']
-  ]).concat(consumeBlockAttributes)
+  ]).concat(consumeBlockAttributes),
+  'GenericSmelter': basicBlockAttributes
 }
-const blockTypesThatConsume = ['UnitFactory']
+
+const blockSprites = { // identifier, name, saveLocation
+  'UnitFactory': [
+    ['icon', 'Icon', ''],
+    ['top', 'Top', '-top']
+  ]
+}
 
 function getBlock(type) {
   var block = {}

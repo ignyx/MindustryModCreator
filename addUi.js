@@ -10,6 +10,8 @@ function addBlock(type) {
   </div>
 </div>`, 'blocks');
   Draw.attributeSet('block-' + blockIndex, blockAttributes[type]);
+  Draw.imageInputGroup('block-' + blockIndex + '-images', 'Sprites', blockSprites[type], 'block-' + blockIndex);
+
   blocks.push(blockIndex);
   return blockIndex++;
 }
@@ -32,11 +34,11 @@ function load() {
 
 function selectImage(src, target) {
   var fr = new FileReader();
-  // when image is loaded, set the src of the image where you want to display it
   fr.onload = function(e) {
     target.src = this.result;
   };
   src.addEventListener("change", function() {
+    spriteFiles[target.id] = src.files[0];
     // fill fr with image data
     fr.readAsDataURL(src.files[0]);
   });

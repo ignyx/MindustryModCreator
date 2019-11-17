@@ -11,6 +11,8 @@ function gatherBlocks() {
     block.properties.type = type;
     block.id = block.properties.id;
     block.properties.id = undefined;
+    // Load Sprites
+    block.sprites = Read.imageInputGroup('block-' + index + '-images', blockSprites[type]);
     result.push(block);
   });
 
@@ -24,6 +26,10 @@ function saveMod() {
   // Save blocks
   gatherBlocks().forEach((block) => {
     zip.file("content/blocks/" + block.id + ".json", JSON.stringify(block.properties));
+    block.sprites.forEach((image) => {
+      if (image.value != null)
+        zip.file("sprites/blocks/" + block.properties.category + "/" + block.id + image.extension + '.png', image.value);
+    })
   });
   zip.generateAsync({
       type: "blob"
@@ -71,15 +77,16 @@ function importMod(zip) {
   // Import Blocks
   rootFolder.folder('content/blocks/').forEach((path, file) => {
     if (file.name.match(/.json/))
-      file.async('string').then(text => importBlock(path.slice(0, -5), JSON.parse(text))).catch((err) => {
+      file.async('string').then(text => importBlock(path.slice(0, -5), JSON.parse(text), rootFolder.folder('sprites/blocks'))).catch((err) => {
         console.log(err), console.log(file.name)
       });
   });
 }
 
 
-function importBlock(id, block) {
+function importBlock(id, block, spriteFolder) {
   block.id = id;
   index = addBlock(block.type);
   Write.attributeSet('block-' + index, block, blockAttributes[block.type]);
+  Write.imageInputGroup('block-' + index, id, spriteFolder);
 }

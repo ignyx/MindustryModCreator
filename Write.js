@@ -46,3 +46,19 @@ Write.object = function(id, object, attributes) {
   })*/
   return Write.attributeSet(id, object, attributes);
 }
+
+Write.imageInputGroup = function(id, name, folder) {
+  let files = folder.file(new RegExp(name));
+  files.forEach((file) => {
+    if (!file.dir) {
+      var type = file.name.split(name)[1].replace('.png', '').replace('-', '');
+      if (type == '') type = 'icon';
+
+      file.async('base64').then((img) => {
+        var html = document.getElementById(id + '-images-' + type);
+        if (html) html.setAttribute('src', 'data:image/png;base64,' + img);
+        else alert('Found unknown image type ' + type + ' when loading ' + name);
+      });
+    }
+  })
+}

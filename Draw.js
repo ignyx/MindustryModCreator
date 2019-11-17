@@ -108,5 +108,12 @@ Draw.object = function(id, name, object, location) {
   if (location == null) location = id;
   Draw.element(`<div id="${id}"></div>`, location);
   Draw.attributeSet(id, object);
+}
 
+Draw.imageInputGroup = function(id, name, array, location) {
+  if (location == null) location = id;
+  Draw.element(`<div id="${id}"><span>${name}</span></div>`, location);
+  array.forEach((image) => {
+    Draw.selectImage(id + '-' + image[0], image[1], id);
+  })
 }

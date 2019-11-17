@@ -61,3 +61,15 @@ Read.object = function(id, object) {
   })*/
   return Read.attributeSet(id, object);
 }
+
+Read.imageInputGroup = function(id, array) {
+  let sprites = [];
+  array.forEach((image) => {
+    let pushable = {}
+    pushable.name = image[0];
+    pushable.value = spriteFiles[id + '-' + image[0]]
+    pushable.extension = image[2]
+    sprites.push(pushable)
+  })
+  return sprites;
+}
