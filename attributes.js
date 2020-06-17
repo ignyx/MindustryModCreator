@@ -4,11 +4,9 @@ const modMetaAttributes = [
   ['description', 'Description', 'string', 'Provides new fun.'],
   ['version', 'Version', 'string', '1.0']
 ];
-const blockCategories = [{
-    value: 'units',
-    name: 'Units'
-  } // indentifier, English name
-]
+
+const blockCategories = [{value: 'units',name: 'Units'},{value: 'crafting',name:'Crafting'},{value:'upgrade',name:'Upgrade'},{value:'effect',name:'Effect'},{value:'defense',name:'Defense'},{value:'power',name:'Power'},{value:'liquid',name:'Liquid'},{value:'distribution',name:'Distribution'},{value:'production',name:'Production'},{value:'turret',name:'Turret'}]
+
 const basicBlockAttributes = [
   ['id', 'id', 'string', 'my-special-building'],
   ['name', 'Name', 'string', 'My special building'], // identifier, English name, input type, palceholder, nullable (default: false)
