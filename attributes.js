@@ -7,6 +7,42 @@ const modMetaAttributes = [
 const blockCategories = [{
     value: 'units',
     name: 'Units'
+  },
+  {
+    value: 'crafting',
+    name:'Crafting'
+  },
+  {
+    value:'upgrade'
+    ,name:'Upgrade'
+  },
+  {
+    value:'effect'
+    ,name:'Effect'
+  },
+  {
+    value:'defense'
+    ,name:'Defense'
+  },
+  {
+    value:'power'
+    ,name:'Power'
+  },
+  {
+    value:'liquid'
+    ,name:'Liquid'
+  },
+  {
+    value:'distribution'
+    ,name:'Distribution'
+  },
+  {
+    value:'production'
+    ,name:'Production'
+  },
+  {
+    value:'turret'
+    ,name:'Turret'
   } // indentifier, English name
 ]
 const basicBlockAttributes = [
