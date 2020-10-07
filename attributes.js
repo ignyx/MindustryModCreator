@@ -1,5 +1,6 @@
 const modMetaAttributes = [
-  ['name', 'Name', 'string', 'My mod'],
+  ['name', 'Name', 'string', 'My name mod for translator'],
+  ['displayName', 'Display Name', 'string', 'My name mod'],
   ['author', 'Author', 'string', 'Me'],
   ['description', 'Description', 'string', 'Provides new fun.'],
   ['version', 'Version', 'string', '1.0']
@@ -80,13 +81,21 @@ const blockAttributes = {
     ['unitType', 'Unit type', 'string', 'chrome-wraith'],
     ['produceTime', 'Production time', 'number', '350']
   ]).concat(consumeBlockAttributes),
-  'GenericSmelter': basicBlockAttributes
+  'GenericSmelter': basicBlockAttributes,
+  'Wall': basicBlockAttributes
 }
 
 const blockSprites = { // identifier, name, saveLocation
   'UnitFactory': [
     ['icon', 'Icon', ''],
     ['top', 'Top', '-top']
+  ],
+  'GenericSmelter': [
+      ['icon', 'Icon', ''],
+      ['top','Top','-top']
+  ],
+  'Wall':[
+    ['icon','Icon','']
   ]
 }
 
