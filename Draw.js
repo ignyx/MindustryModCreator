@@ -69,7 +69,7 @@ Draw.pair = function(id, objects, location) { // objects : [{type:"string/number
             <span class="input-group-text">${objects[1].name}</span>
           </div>
           <input id="${id}-${objects[1].value}" type="${objects[1].type}" placeholder="${objects[1].placeholder}" class="form-control">
-          <span class="badge badge-pill badge-danger" onclick="">Remove</span>
+          <span class="badge badge-pill badge-danger" onclick="delPairItem('${id}')">Remove</span>
         </div>`;
 
   return Draw.element(result, location)
