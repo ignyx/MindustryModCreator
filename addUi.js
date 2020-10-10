@@ -43,3 +43,8 @@ function selectImage(src, target) {
     fr.readAsDataURL(src.files[0]);
   });
 }
+
+function delPairItem(id) {
+  var index = document.getElementById(id);
+  index.remove();
+}
