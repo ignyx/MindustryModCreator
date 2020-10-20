@@ -1,5 +1,5 @@
 {
-  "name": "svelte-app",
+  "name": "mindustrymodcreator",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
@@ -16,6 +16,27 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.0"
-  }
+    "@rollup/plugin-json": "^4.1.0",
+    "sirv-cli": "^1.0.0",
+    "svelte-i18n": "^3.1.0"
+  },
+  "description": "Tool to create Mindustry mods",
+  "main": "./src/main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paulao17/MindustryModCreator.git"
+  },
+  "keywords": [
+    "mindustry",
+    "mindustrymod"
+  ],
+  "author": "Paulao17",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Paulao17/MindustryModCreator/issues"
+  },
+  "homepage": "https://github.com/Paulao17/MindustryModCreator#readme"
 }
