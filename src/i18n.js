@@ -1,4 +1,4 @@
-import { addMessages, init, getLocaleFromNavigator } from 'svelte-i18n'
+import { addMessages, init, getLocaleFromPathname } from 'svelte-i18n'
 // Loads translations
 import en from './bundles/en.json'
 import fr from './bundles/fr.json'
@@ -11,5 +11,5 @@ addMessages('fr', fr)
 
 init({
   fallbackLocale: 'en',
-  initialLocale: getLocaleFromNavigator(),
+  initialLocale: getLocaleFromPathname(/^\/(.*?)\//),
 })
